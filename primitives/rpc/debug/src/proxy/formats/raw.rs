@@ -19,7 +19,6 @@ use crate::single::TransactionTrace;
 
 pub struct Response;
 
-#[cfg(feature = "std")]
 impl super::TraceResponseBuilder for Response {
 	type Listener = Listener;
 	type Response = TransactionTrace;

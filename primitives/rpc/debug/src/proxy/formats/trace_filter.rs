@@ -24,7 +24,6 @@ pub use ethereum_types::{H160, H256, U256};
 
 pub struct Response;
 
-#[cfg(feature = "std")]
 impl super::TraceResponseBuilder for Response {
 	type Listener = Listener;
 	type Response = Vec<TransactionTrace>;

@@ -37,7 +37,11 @@ use alloc::{vec, vec::Vec};
 pub use codec::{Decode, Encode};
 pub use ethereum_types::{H160, H256, U256};
 
+// The actual tracer implementations are only used client-side.
+
+#[cfg(feature = "std")]
 pub mod call_list;
+#[cfg(feature = "std")]
 pub mod raw;
 
 /// Main trait to proxy emitted messages.

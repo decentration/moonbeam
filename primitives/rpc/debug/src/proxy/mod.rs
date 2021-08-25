@@ -14,7 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with Moonbeam.  If not, see <http://www.gnu.org/licenses/>.
 
+// Formats are only needed client-side.
+#[cfg(feature = "std")]
 pub mod formats;
+
 pub mod types;
 pub mod v1;
 pub mod v2;

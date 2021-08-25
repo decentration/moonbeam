@@ -280,6 +280,8 @@ impl Listener {
 
 impl ListenerT for Listener {
 	fn event(&mut self, event: Event) {
+		println!("Event : {:?}", event);
+
 		match event {
 			Event::Gasometer(gasometer_event) => self.gasometer_event(gasometer_event),
 			Event::Runtime(runtime_event) => self.runtime_event(runtime_event),
