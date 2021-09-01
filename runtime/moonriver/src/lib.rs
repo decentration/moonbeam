@@ -630,10 +630,12 @@ impl pallet_author_slot_filter::Config for Runtime {
 }
 
 parameter_types! {
-	pub const VestingPeriod: BlockNumber = 48 * WEEKS;
+	// TODO to be revisited
+	pub const VestingPeriod: BlockNumber = 4 * WEEKS;
 	pub const MinimumReward: Balance = 0;
 	pub const Initialized: bool = false;
 	pub const InitializationPayment: Perbill = Perbill::from_percent(30);
+	pub const RelaySignaturesThreshold: Perbill = Perbill::from_percent(67);
 	pub const MaxInitContributorsBatchSizes: u32 = 500;
 }
 
@@ -645,6 +647,7 @@ impl pallet_crowdloan_rewards::Config for Runtime {
 	type MinimumReward = MinimumReward;
 	type RewardCurrency = Balances;
 	type RelayChainAccountId = AccountId32;
+	type RewardAddressRelayVoteThreshold = RelaySignaturesThreshold;
 	type WeightInfo = pallet_crowdloan_rewards::weights::SubstrateWeight<Runtime>;
 }
 
@@ -872,7 +875,7 @@ runtime_common::impl_runtime_apis_plus_common! {
 			block_hash: <Block as BlockT>::Hash,
 		) -> TransactionValidity {
 			Executive::validate_transaction(source, tx, block_hash)
-		}
+			}
 	}
 }
 
